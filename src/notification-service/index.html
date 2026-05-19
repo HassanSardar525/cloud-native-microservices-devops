@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopCloud — Notification Service</title>
+  <link rel="stylesheet" href="../frontend/style.css">
+</head>
+<body>
+  <nav>
+    <a class="logo" href="../frontend/index.html">⚡ ShopCloud</a>
+    <ul>
+      <li><a href="../frontend/index.html">Home</a></li>
+      <li><a href="../user-service/index.html">Users</a></li>
+      <li><a href="../product-service/index.html">Products</a></li>
+      <li><a href="../order-service/index.html">Orders</a></li>
+      <li><a href="index.html">Notifications</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+    <span class="badge green">🔔 Notification Service</span>
+    <h1>Notifications</h1>
+    <p>Delivers email and in-app alerts triggered by order and system events.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="icon">📧</div><h3>POST /notify/email</h3><p>Send an email notification via SMTP to a registered user address.</p></div>
+    <div class="card"><div class="icon">🔔</div><h3>POST /notify/inapp</h3><p>Push an in-app notification to the user's notification feed.</p></div>
+    <div class="card"><div class="icon">📋</div><h3>GET /notifications/:userId</h3><p>Fetch all notifications for a user, sorted by timestamp.</p></div>
+    <div class="card"><div class="icon">✅</div><h3>PATCH /notifications/:id/read</h3><p>Mark a notification as read and update the unread counter.</p></div>
+  </div>
+  <div class="section">
+    <h2>Recent Notifications</h2>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Type</th><th>Message</th><th>Recipient</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>#N-501</td><td>Email</td><td>Order #8821 delivered</td><td>ali@shopcloud.io</td><td><span class="status online">Sent</span></td></tr>
+        <tr><td>#N-502</td><td>In-App</td><td>Your order has shipped</td><td>sara@shopcloud.io</td><td><span class="status online">Sent</span></td></tr>
+        <tr><td>#N-503</td><td>Email</td><td>Payment confirmed</td><td>umar@shopcloud.io</td><td><span class="status pending">Queued</span></td></tr>
+        <tr><td>#N-504</td><td>In-App</td><td>Order #8824 cancelled</td><td>ayesha@shopcloud.io</td><td><span class="status offline">Failed</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>ShopCloud © 2025 — COMSATS DevOps Final Project</footer>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopCloud — User Service</title>
+  <link rel="stylesheet" href="../frontend/style.css">
+</head>
+<body>
+  <nav>
+    <a class="logo" href="../frontend/index.html">⚡ ShopCloud</a>
+    <ul>
+      <li><a href="../frontend/index.html">Home</a></li>
+      <li><a href="index.html">Users</a></li>
+      <li><a href="../product-service/index.html">Products</a></li>
+      <li><a href="../order-service/index.html">Orders</a></li>
+      <li><a href="../notification-service/index.html">Notifications</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+    <span class="badge purple">👤 User Service</span>
+    <h1>User Management</h1>
+    <p>Handles registration, login, JWT authentication, and user profiles.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="icon">🔐</div><h3>POST /auth/register</h3><p>Create a new user account with hashed password and email verification.</p></div>
+    <div class="card"><div class="icon">🗝️</div><h3>POST /auth/login</h3><p>Authenticate user and return a signed JWT access token.</p></div>
+    <div class="card"><div class="icon">📋</div><h3>GET /users/:id</h3><p>Fetch user profile. Requires valid JWT in Authorization header.</p></div>
+    <div class="card"><div class="icon">✏️</div><h3>PUT /users/:id</h3><p>Update user profile fields including name, email, and preferences.</p></div>
+  </div>
+  <div class="section">
+    <h2>Registered Users</h2>
+    <table>
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>#001</td><td>Ali Hassan</td><td>ali@shopcloud.io</td><td>Admin</td><td><span class="status online">Active</span></td></tr>
+        <tr><td>#002</td><td>Sara Khan</td><td>sara@shopcloud.io</td><td>Customer</td><td><span class="status online">Active</span></td></tr>
+        <tr><td>#003</td><td>Umar Farooq</td><td>umar@shopcloud.io</td><td>Customer</td><td><span class="status pending">Pending</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>ShopCloud © 2025 — COMSATS DevOps Final Project</footer>
+</body>
+</html>

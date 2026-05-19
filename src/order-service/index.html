@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopCloud — Order Service</title>
+  <link rel="stylesheet" href="../frontend/style.css">
+</head>
+<body>
+  <nav>
+    <a class="logo" href="../frontend/index.html">⚡ ShopCloud</a>
+    <ul>
+      <li><a href="../frontend/index.html">Home</a></li>
+      <li><a href="../user-service/index.html">Users</a></li>
+      <li><a href="../product-service/index.html">Products</a></li>
+      <li><a href="index.html">Orders</a></li>
+      <li><a href="../notification-service/index.html">Notifications</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+    <span class="badge orange">🛒 Order Service</span>
+    <h1>Order Processing</h1>
+    <p>Handles order creation, payment coordination, and real-time status tracking.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="icon">🛒</div><h3>POST /orders</h3><p>Create a new order. Validates product availability and reserves inventory.</p></div>
+    <div class="card"><div class="icon">📋</div><h3>GET /orders/:id</h3><p>Retrieve full order details including items, pricing, and current status.</p></div>
+    <div class="card"><div class="icon">🔄</div><h3>PATCH /orders/:id/status</h3><p>Update order status through the fulfillment pipeline.</p></div>
+    <div class="card"><div class="icon">❌</div><h3>DELETE /orders/:id</h3><p>Cancel an order and trigger inventory release and refund flow.</p></div>
+  </div>
+  <div class="section">
+    <h2>Recent Orders</h2>
+    <table>
+      <thead>
+        <tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>#ORD-8821</td><td>Ali Hassan</td><td>2</td><td>$139.98</td><td><span class="status online">Delivered</span></td></tr>
+        <tr><td>#ORD-8822</td><td>Sara Khan</td><td>1</td><td>$49.99</td><td><span class="status pending">Shipped</span></td></tr>
+        <tr><td>#ORD-8823</td><td>Umar Farooq</td><td>3</td><td>$179.97</td><td><span class="status pending">Processing</span></td></tr>
+        <tr><td>#ORD-8824</td><td>Ayesha Malik</td><td>1</td><td>$29.99</td><td><span class="status offline">Cancelled</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>ShopCloud © 2025 — COMSATS DevOps Final Project</footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopCloud — Product Service</title>
+  <link rel="stylesheet" href="../frontend/style.css">
+</head>
+<body>
+  <nav>
+    <a class="logo" href="../frontend/index.html">⚡ ShopCloud</a>
+    <ul>
+      <li><a href="../frontend/index.html">Home</a></li>
+      <li><a href="../user-service/index.html">Users</a></li>
+      <li><a href="index.html">Products</a></li>
+      <li><a href="../order-service/index.html">Orders</a></li>
+      <li><a href="../notification-service/index.html">Notifications</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+    <span class="badge blue">📦 Product Service</span>
+    <h1>Product Catalog</h1>
+    <p>Manages product listings, inventory levels, and catalog search.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="icon">📋</div><h3>GET /products</h3><p>List all products with filtering, sorting, and pagination support.</p></div>
+    <div class="card"><div class="icon">➕</div><h3>POST /products</h3><p>Add a new product to the catalog. Admin role required.</p></div>
+    <div class="card"><div class="icon">✏️</div><h3>PUT /products/:id</h3><p>Update product details, price, or inventory count.</p></div>
+    <div class="card"><div class="icon">🗑️</div><h3>DELETE /products/:id</h3><p>Remove a product. Soft delete — data is retained.</p></div>
+  </div>
+  <div class="section">
+    <h2>Product Inventory</h2>
+    <table>
+      <thead>
+        <tr><th>SKU</th><th>Product</th><th>Price</th><th>Stock</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>SKU-101</td><td>Wireless Headphones</td><td>$49.99</td><td>142</td><td><span class="status online">In Stock</span></td></tr>
+        <tr><td>SKU-102</td><td>Mechanical Keyboard</td><td>$89.99</td><td>37</td><td><span class="status online">In Stock</span></td></tr>
+        <tr><td>SKU-103</td><td>USB-C Hub</td><td>$29.99</td><td>0</td><td><span class="status offline">Out of Stock</span></td></tr>
+        <tr><td>SKU-104</td><td>Webcam HD</td><td>$59.99</td><td>8</td><td><span class="status pending">Low Stock</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>ShopCloud © 2025 — COMSATS DevOps Final Project</footer>
+</body>
+</html>

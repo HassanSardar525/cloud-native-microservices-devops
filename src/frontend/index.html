@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopCloud — Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a class="logo" href="index.html">⚡ ShopCloud</a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="../user-service/index.html">Users</a></li>
+      <li><a href="../product-service/index.html">Products</a></li>
+      <li><a href="../order-service/index.html">Orders</a></li>
+      <li><a href="../notification-service/index.html">Notifications</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+    <span class="badge green">● All Systems Operational</span>
+    <h1>ShopCloud Platform</h1>
+    <p>Cloud-native e-commerce microservices — containerized, orchestrated, and deployed at scale.</p>
+  </div>
+  <div class="cards">
+    <div class="card"><div class="icon">👤</div><h3>User Service</h3><p>JWT authentication, registration, login, and user profile management.</p></div>
+    <div class="card"><div class="icon">📦</div><h3>Product Service</h3><p>Full product catalog with CRUD APIs, inventory tracking, and search.</p></div>
+    <div class="card"><div class="icon">🛒</div><h3>Order Service</h3><p>Order processing, status tracking, and payment integration.</p></div>
+    <div class="card"><div class="icon">🔔</div><h3>Notification Service</h3><p>Email and in-app alerts for order events and system notifications.</p></div>
+  </div>
+  <div class="section">
+    <h2>Service Health</h2>
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Version</th><th>Environment</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>User Service</td><td>v1.0.0</td><td>Production</td><td><span class="status online">Online</span></td></tr>
+        <tr><td>Product Service</td><td>v1.0.0</td><td>Production</td><td><span class="status online">Online</span></td></tr>
+        <tr><td>Order Service</td><td>v1.0.0</td><td>Production</td><td><span class="status online">Online</span></td></tr>
+        <tr><td>Notification Service</td><td>v1.0.0</td><td>Production</td><td><span class="status pending">Pending</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>ShopCloud © 2025 — COMSATS DevOps Final Project</footer>
+</body>
+</html>
