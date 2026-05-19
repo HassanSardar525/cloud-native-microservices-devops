@@ -1,0 +1,13 @@
+Dockerfile
+.dockerignore
+.git
+.gitignore
+.github
+README.md
+Jenkinsfile
+k8s
+node_modules
+*.log
+.DS_Store
+.env
+.env.*

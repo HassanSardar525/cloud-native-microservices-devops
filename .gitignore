@@ -1,8 +1,29 @@
-cat > .gitignore << 'EOF'
-node_modules/
-*.env
+# OS files
 .DS_Store
+Thumbs.db
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Environment / secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Logs
 *.log
+npm-debug.log*
+
+# Build artifacts
 dist/
 build/
-EOF
+out/

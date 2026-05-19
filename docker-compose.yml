@@ -1,0 +1,66 @@
+name: ecommerce-microservices
+
+services:
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: Dockerfile
+    image: hassansardar525/frontend:1.0.0
+    container_name: frontend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    networks:
+      - ecommerce-net
+
+  user-service:
+    build:
+      context: ./src/user-service
+      dockerfile: Dockerfile
+    image: hassansardar525/user-service:1.0.0
+    container_name: user-service
+    ports:
+      - "8081:80"
+    restart: unless-stopped
+    networks:
+      - ecommerce-net
+
+  product-service:
+    build:
+      context: ./src/product-service
+      dockerfile: Dockerfile
+    image: hassansardar525/product-service:1.0.0
+    container_name: product-service
+    ports:
+      - "8082:80"
+    restart: unless-stopped
+    networks:
+      - ecommerce-net
+
+  order-service:
+    build:
+      context: ./src/order-service
+      dockerfile: Dockerfile
+    image: hassansardar525/order-service:1.0.0
+    container_name: order-service
+    ports:
+      - "8083:80"
+    restart: unless-stopped
+    networks:
+      - ecommerce-net
+
+  notification-service:
+    build:
+      context: ./src/notification-service
+      dockerfile: Dockerfile
+    image: hassansardar525/notification-service:1.0.0
+    container_name: notification-service
+    ports:
+      - "8084:80"
+    restart: unless-stopped
+    networks:
+      - ecommerce-net
+
+networks:
+  ecommerce-net:
+    driver: bridge
