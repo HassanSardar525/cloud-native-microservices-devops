@@ -33,6 +33,12 @@ The platform consists of 5 independent microservices:
 - **Version Control**: Git Flow
 
 ---
+## Key DevOps Features
+* **Zero-Downtime Deployments**: Utilizes Kubernetes Rolling Updates to update services without interrupting user traffic.
+* **Automated Rollbacks**: Integrated `kubectl rollout undo` in the Jenkins pipeline to handle deployment failures instantly.
+* **Multi-Environment Isolation**: Separate Git branches mapped to dedicated environments to isolate development, staging, and production workloads.
+* **Lightweight Footprint**: Base images leverage minimal footprints (like `nginx:alpine`) to optimize build times and reduce the attack surface.
+
 
 ## Environments & Branches
 
