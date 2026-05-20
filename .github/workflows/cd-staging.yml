@@ -1,0 +1,41 @@
+name: CD - Staging
+
+on:
+  workflow_run:
+    workflows: ["CI - Staging"]
+    types: [ completed ]
+    branches: [ staging ]
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Pull staging images
+        run: |
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/frontend:staging
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/user-service:staging
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/product-service:staging
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/order-service:staging
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/notification-service:staging
+
+      - name: Deploy to staging
+        run: |
+          echo "Deploying to STAGING environment..."
+          echo "Environment: staging"
+          echo "Branch: staging"
+          echo "Commit: ${{ github.sha }}"
+
+      - name: CD Success notification
+        run: echo "✔ CD pipeline passed — staging environment updated"

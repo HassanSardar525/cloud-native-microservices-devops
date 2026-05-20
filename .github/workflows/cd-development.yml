@@ -1,0 +1,42 @@
+name: CD - Development
+
+on:
+  workflow_run:
+    workflows: ["CI - Development"]
+    types: [ completed ]
+    branches: [ develop ]
+
+jobs:
+  deploy-development:
+    runs-on: ubuntu-latest
+    environment: development
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Pull latest dev images
+        run: |
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/frontend:dev
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/user-service:dev
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/product-service:dev
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/order-service:dev
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/notification-service:dev
+
+      - name: Deploy to development
+        run: |
+          echo "Deploying to DEVELOPMENT environment..."
+          echo "Images pulled and ready for deployment"
+          echo "Environment: development"
+          echo "Branch: develop"
+          echo "Commit: ${{ github.sha }}"
+
+      - name: CD Success notification
+        run: echo "✔ CD pipeline passed — development environment updated"

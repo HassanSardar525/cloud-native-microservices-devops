@@ -1,0 +1,62 @@
+name: CI - Staging
+
+on:
+  push:
+    branches: [ staging ]
+  pull_request:
+    branches: [ staging ]
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Lint HTML files
+        run: |
+          echo "Linting HTML files..."
+          for file in $(find src -name "*.html"); do
+            echo "Checking $file"
+            if grep -q "<!DOCTYPE html>" "$file"; then
+              echo "✔ $file has DOCTYPE"
+            else
+              echo "✘ $file missing DOCTYPE"
+              exit 1
+            fi
+          done
+
+      - name: Verify CSS exists in all services
+        run: |
+          for service in frontend user-service product-service order-service notification-service; do
+            if [ -f "src/$service/style.css" ]; then
+              echo "✔ src/$service/style.css found"
+            else
+              echo "✘ src/$service/style.css MISSING"
+              exit 1
+            fi
+          done
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push staging images
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/frontend:staging ./src/frontend
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/user-service:staging ./src/user-service
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/product-service:staging ./src/product-service
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/order-service:staging ./src/order-service
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/notification-service:staging ./src/notification-service
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/frontend:staging
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/user-service:staging
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/product-service:staging
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/order-service:staging
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/notification-service:staging
+
+      - name: CI Success notification
+        run: echo "✔ CI pipeline passed for staging environment"
